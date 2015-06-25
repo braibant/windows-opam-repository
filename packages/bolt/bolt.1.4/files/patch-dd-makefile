@@ -1,0 +1,25 @@
+diff --git a/Makefile b/Makefile
+index 6187158..3ecb65c 100644
+--- a/Makefile
++++ b/Makefile
+@@ -32,6 +32,7 @@ PATH_INSTALL=$(PATH_OCAML_PREFIX)/lib/ocaml/bolt
+ 
+ PROJECT_NAME=bolt
+ OCAMLBUILD=ocamlbuild
++OCAMLFIND=ocamlfind
+ OCAMLBUILD_ENV=WARNINGS=$(WARNINGS) PATH_OCAML_PREFIX=$(PATH_OCAML_PREFIX)
+ OCAMLBUILD_FLAGS=-classic-display -no-links
+ MODULES_ODOCL=$(PROJECT_NAME).odocl
+@@ -74,9 +75,9 @@ veryclean: clean
+ 	rm -f $(PATH_OCAMLDOC)/*.html $(PATH_OCAMLDOC)/*.css
+ 
+ install: FORCE
+-	if [ -x "$(PATH_OCAMLFIND)" ]; then \
+-	  $(PATH_OCAMLFIND) query $(PROJECT_NAME) && $(PATH_OCAMLFIND) remove $(PROJECT_NAME) || true; \
+-	  $(PATH_OCAMLFIND) install $(PROJECT_NAME) META -optional \
++	if [ -x "$(OCAMLFIND)" ]; then \
++	  $(OCAMLFIND) query $(PROJECT_NAME) && $(OCAMLFIND) remove $(PROJECT_NAME) || true; \
++	  $(OCAMLFIND) install $(PROJECT_NAME) META -optional \
+ 	    $(PATH_BUILD)/src/syntax/$(PROJECT_NAME)_pp.cmo \
+ 	    $(PATH_BUILD)/src/threads/$(PROJECT_NAME)Thread.cm* \
+ 	    $(PATH_BUILD)/src/threads/$(PROJECT_NAME)Thread.o \
