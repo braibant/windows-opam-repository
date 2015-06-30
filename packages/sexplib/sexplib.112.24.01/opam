@@ -1,7 +1,7 @@
 opam-version: "1"
 maintainer: "opensource@janestreet.com"
 build: [
-  ["./configure" "--%{type_conv:enable}%-syntax"]
+  ["sh.exe" "./configure" "--%{type_conv:enable}%-syntax"]
   [make]
   [make "install"]
 ]
